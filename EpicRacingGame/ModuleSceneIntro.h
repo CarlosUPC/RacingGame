@@ -5,6 +5,7 @@
 #include "Primitive.h"
 
 #define MAX_SNAKE 2
+#define ROAD_DIM vec3(3,2,5)
 
 struct PhysBody3D;
 struct PhysMotor3D;
@@ -29,7 +30,8 @@ public:
 	PhysBody3D* pb_snake2[MAX_SNAKE];
 	Sphere s_snake2[MAX_SNAKE];
 	*/
-
+	
+	
 	PhysBody3D* pb_chassis;
 	Cube p_chassis;
 
