@@ -20,6 +20,8 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
+	LoadCircuit();
+
 	return ret;
 }
 
@@ -38,10 +40,49 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.axis = true;
 	p.Render();
 
+
+	PrintCircuit();
+
 	return UPDATE_CONTINUE;
+}
+
+void ModuleSceneIntro::LoadCircuit() {
+
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y, vec3_zero.x), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y, vec3_zero.x + ROAD_DIM.z), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y, vec3_zero.x + ROAD_DIM.z *2), White);
+}
+
+void ModuleSceneIntro::PrintCircuit() {
+	
+	p2List_item<Cube>* cubes_item = cubes.getFirst();
+
+	while (cubes_item != nullptr) {
+		cubes_item->data.Render();
+
+		cubes_item = cubes_item->next;
+	}
 }
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
+}
+
+
+void ModuleSceneIntro::CreateCube(vec3 dim, vec3 pos, Color color, float angle, vec3 u, float mass)
+{
+	Cube c(dim.x, dim.y, dim.z);
+	c.SetPos(pos.x, pos.y, pos.z);
+	c.color = color;
+
+	if (angle != 0)
+		c.SetRotation(angle, vec3(u.x, u.y, u.z));
+
+	
+	App->physics->AddBody(c, mass);
+
+	cubes.add(c);
+
+	//return c;
 }
 

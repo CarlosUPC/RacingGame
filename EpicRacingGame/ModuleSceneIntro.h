@@ -5,7 +5,7 @@
 #include "Primitive.h"
 
 #define MAX_SNAKE 2
-#define ROAD_DIM vec3(3,2,5)
+#define ROAD_DIM vec3(5,0.5,5)
 
 struct PhysBody3D;
 struct PhysMotor3D;
@@ -21,6 +21,9 @@ public:
 	bool CleanUp();
 
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
+	void LoadCircuit();
+	void PrintCircuit();
+	void CreateCube(vec3 dimension = { 1.0f,1.0f,1.0f }, vec3 position = { 0.0f, 0.0f, 0.0f }, Color color = White, float angle = 0.0f, vec3 u = (0.0f, 0.0f, 0.0f), float mass = 0.0f);
 
 public:
 	/*
@@ -30,6 +33,7 @@ public:
 	PhysBody3D* pb_snake2[MAX_SNAKE];
 	Sphere s_snake2[MAX_SNAKE];
 	*/
+
 	
 	
 	PhysBody3D* pb_chassis;
@@ -43,4 +47,10 @@ public:
 
 	PhysMotor3D* left_wheel;
 	PhysMotor3D* right_wheel;
+
+	// primitives
+	p2List<Cube> cubes;
+
+	//Circuit Paramenters
+	vec3 vec3_zero = { 0.0f,0.0f,0.0f };
 };
