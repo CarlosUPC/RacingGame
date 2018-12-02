@@ -53,4 +53,5 @@ public:
 
 	//Circuit Paramenters
 	vec3 vec3_zero = { 0.0f,0.0f,0.0f };
+	vec3 axis_x = { 1.0f,0.0f,0.0f }, axis_y = { 0.0f,1.0f,0.0f }, axis_z = { 0.0f,0.0f,1.0f };
 };
