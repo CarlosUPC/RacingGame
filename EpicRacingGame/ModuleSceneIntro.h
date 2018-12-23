@@ -6,6 +6,7 @@
 
 #define MAX_SNAKE 2
 #define ROAD_DIM vec3(5,0.5,5)
+#define SENSOR_DIM vec3(5,2,2)
 
 struct PhysBody3D;
 struct PhysMotor3D;
@@ -24,6 +25,8 @@ public:
 	void LoadCircuit();
 	void PrintCircuit();
 	void CreateCube(vec3 dimension = { 1.0f,1.0f,1.0f }, vec3 position = { 0.0f, 0.0f, 0.0f }, Color color = White, float angle = 0.0f, vec3 u = (0.0f, 0.0f, 0.0f), float mass = 0.0f);
+	void LoadCheckPoints();
+	PhysBody3D* CreateCheckPoints(vec3 dimension = { 1.0f,1.0f,1.0f }, vec3 position = { 0.0f, 0.0f, 0.0f }, bool sensor = false);
 
 public:
 	/*
@@ -54,4 +57,8 @@ public:
 	//Circuit Paramenters
 	vec3 vec3_zero = { 0.0f,0.0f,0.0f };
 	vec3 axis_x = { 1.0f,0.0f,0.0f }, axis_y = { 0.0f,1.0f,0.0f }, axis_z = { 0.0f,0.0f,1.0f };
+
+	//Sensors
+	PhysBody3D* check_points[9] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr , nullptr };
+	uint current_checkpoint = 0;
 };
