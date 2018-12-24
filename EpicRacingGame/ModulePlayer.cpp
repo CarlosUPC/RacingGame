@@ -148,6 +148,16 @@ update_status ModulePlayer::Update(float dt)
 		brake = BRAKE_POWER;
 	}
 
+	//----------------------RESTART-----------------------//
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN) {
+
+		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
+		vehicle->body->setAngularVelocity(btVector3(0, 0, 0));
+		IdentityMatrix = I_MAT;
+		vehicle->SetTransform(IdentityMatrix.M);
+	}
+
+
 	vehicle->ApplyEngineForce(acceleration);
 	vehicle->Turn(turn);
 	vehicle->Brake(brake);
