@@ -23,6 +23,7 @@ bool ModuleSceneIntro::Start()
     
 	LoadCheckPoints();
 	LoadCircuit();
+	LoadCoins();
 
 	return ret;
 }
@@ -54,7 +55,11 @@ void ModuleSceneIntro::LoadCheckPoints() {
 	
 }
 
+void ModuleSceneIntro::LoadCoins() {
 
+	coins[0] = CreateCoin(1.0f, vec3(vec3_zero.x, vec3_zero.y + 1, vec3_zero.z + ROAD_DIM.z * 6), Yellow, true);
+	coins[0]->collision_listeners.add(this);
+}
 
 
 void ModuleSceneIntro::LoadCircuit() {
@@ -74,6 +79,13 @@ void ModuleSceneIntro::PrintCircuit() {
 
 		cubes_item = cubes_item->next;
 	}
+
+	p2List_item<Sphere>* sphere_item = s_coins.getFirst();
+	while (sphere_item != nullptr) {
+		sphere_item->data.Render();
+
+		sphere_item = sphere_item->next;
+	}
 }
 
 
@@ -92,6 +104,23 @@ void ModuleSceneIntro::CreateCube(vec3 dim, vec3 pos, Color color, float angle, 
 	cubes.add(c);
 
 	//return c;
+}
+
+PhysBody3D* ModuleSceneIntro::CreateCoin(float radius, vec3 pos, Color color, bool sensor, float angle, vec3 u, float mass)
+{
+	Sphere s(radius);
+	s.SetPos(pos.x, pos.y, pos.z);
+	s.color = color;
+
+	if (angle != 0)
+		s.SetRotation(angle, vec3(u.x, u.y, u.z));
+
+
+	PhysBody3D* coin = App->physics->AddBody(s, 0.0f);
+	coin->SetAsSensor(sensor);
+	
+	s_coins.add(s);
+	return coin;
 }
 
 PhysBody3D* ModuleSceneIntro::CreateCheckPoints(vec3 dim, vec3 pos, bool sensor) {

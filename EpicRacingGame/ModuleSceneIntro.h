@@ -24,9 +24,13 @@ public:
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
 	void LoadCircuit();
 	void PrintCircuit();
+	void LoadCoins();
 	void CreateCube(vec3 dimension = { 1.0f,1.0f,1.0f }, vec3 position = { 0.0f, 0.0f, 0.0f }, Color color = White, float angle = 0.0f, vec3 u = (0.0f, 0.0f, 0.0f), float mass = 0.0f);
+	PhysBody3D* CreateCoin(float radius = 0.0f, vec3 position = { 0.0f, 0.0f, 0.0f }, Color color = White, bool sensor = false,float angle = 0.0f, vec3 u = (0.0f, 0.0f, 0.0f), float mass = 0.0f);
+	
 	void LoadCheckPoints();
 	PhysBody3D* CreateCheckPoints(vec3 dimension = { 1.0f,1.0f,1.0f }, vec3 position = { 0.0f, 0.0f, 0.0f }, bool sensor = false);
+	
 	void Timer(float dt);
 public:
 	/*
@@ -53,13 +57,14 @@ public:
 
 	// primitives
 	p2List<Cube> cubes;
-
+	p2List<Sphere> s_coins;
 	//Circuit Paramenters
 	vec3 vec3_zero = { 0.0f,0.0f,0.0f };
 	vec3 axis_x = { 1.0f,0.0f,0.0f }, axis_y = { 0.0f,1.0f,0.0f }, axis_z = { 0.0f,0.0f,1.0f };
 
 	//Sensors
 	PhysBody3D* check_points[9] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr , nullptr };
+	PhysBody3D* coins[9] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr , nullptr };
 	uint current_checkpoint = 0;
 
 	//Timer
