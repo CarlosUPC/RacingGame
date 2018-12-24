@@ -16,7 +16,8 @@ bool ModuleSceneIntro::Start()
 {
 	LOG("Loading Intro assets");
 	bool ret = true;
-
+	minutes = 1;
+	seconds = 60.0f;
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
     
@@ -40,8 +41,8 @@ update_status ModuleSceneIntro::Update(float dt)
 	Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();
-
-
+	
+	Timer(dt);
 	PrintCircuit();
 
 	return UPDATE_CONTINUE;
@@ -104,6 +105,30 @@ PhysBody3D* ModuleSceneIntro::CreateCheckPoints(vec3 dim, vec3 pos, bool sensor)
 	
 
 	return tmp;
+}
+
+
+void ModuleSceneIntro::Timer(float dt)
+{
+
+	if (minutes >= 0 && finishedTime == false) {
+			seconds -= 1.0f * dt;
+			
+			if (seconds <= 0)
+			{
+				seconds = 60.0f;
+				minutes -= 1;
+
+				if (minutes == -1) {
+					finishedTime = true;
+				}
+			}
+	}
+	
+	else if (finishedTime == true) {
+		seconds = 0.0f;
+		minutes = 0;
+	}
 }
 
 

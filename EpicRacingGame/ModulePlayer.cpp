@@ -155,6 +155,9 @@ update_status ModulePlayer::Update(float dt)
 		vehicle->body->setAngularVelocity(btVector3(0, 0, 0));
 		IdentityMatrix = I_MAT;
 		vehicle->SetTransform(IdentityMatrix.M);
+
+		App->scene_intro->minutes = 1;
+		App->scene_intro->seconds = 60.0f;
 	}
 	//-------------SPAWN TO CURRENT CHECKPOINT--------------//
 	if (App->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN) {
@@ -190,7 +193,7 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->Render();
 
 	char title[80];
-	sprintf_s(title, "%.1f Km/h", vehicle->GetKmh());
+	sprintf_s(title, "%.1f Km/h, Checkpoint: %i, Time: %i:%.1f", vehicle->GetKmh(), App->scene_intro->current_checkpoint, App->scene_intro->minutes, App->scene_intro->seconds);
 	App->window->SetTitle(title);
 
 	return UPDATE_CONTINUE;

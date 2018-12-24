@@ -27,7 +27,7 @@ public:
 	void CreateCube(vec3 dimension = { 1.0f,1.0f,1.0f }, vec3 position = { 0.0f, 0.0f, 0.0f }, Color color = White, float angle = 0.0f, vec3 u = (0.0f, 0.0f, 0.0f), float mass = 0.0f);
 	void LoadCheckPoints();
 	PhysBody3D* CreateCheckPoints(vec3 dimension = { 1.0f,1.0f,1.0f }, vec3 position = { 0.0f, 0.0f, 0.0f }, bool sensor = false);
-
+	void Timer(float dt);
 public:
 	/*
 	PhysBody3D* pb_snake[MAX_SNAKE];
@@ -61,4 +61,9 @@ public:
 	//Sensors
 	PhysBody3D* check_points[9] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr , nullptr };
 	uint current_checkpoint = 0;
+
+	//Timer
+	int minutes = 0;
+	float seconds = 0;
+	bool finishedTime = false;
 };
