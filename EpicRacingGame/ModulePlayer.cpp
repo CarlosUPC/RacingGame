@@ -156,7 +156,32 @@ update_status ModulePlayer::Update(float dt)
 		IdentityMatrix = I_MAT;
 		vehicle->SetTransform(IdentityMatrix.M);
 	}
+	//-------------SPAWN TO CURRENT CHECKPOINT--------------//
+	if (App->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN) {
 
+		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
+		vehicle->body->setAngularVelocity(btVector3(0, 0, 0));
+
+		switch (App->scene_intro->current_checkpoint) {
+
+		case 0:
+			vehicle->SetTransform(IdentityMatrix.M);
+			break;
+		case 1:
+			vehicle->SetTransform(IdentityMatrix.M);
+			vehicle->SetPos(App->scene_intro->vec3_zero.x, App->scene_intro->vec3_zero.y, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 6);
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		}
+
+
+
+	}
 
 	vehicle->ApplyEngineForce(acceleration);
 	vehicle->Turn(turn);
