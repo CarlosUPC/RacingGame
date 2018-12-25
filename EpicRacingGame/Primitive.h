@@ -31,7 +31,7 @@ public:
 	Color color;
 	mat4x4 transform;
 	bool axis,wire;
-
+	bool to_delete = false;
 protected:
 	PrimitiveTypes type;
 };

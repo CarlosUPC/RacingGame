@@ -19,6 +19,7 @@ public:
 
 	bool Start();
 	update_status Update(float dt);
+	update_status PostUpdate(float dt);
 	bool CleanUp();
 
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
@@ -57,7 +58,12 @@ public:
 
 	// primitives
 	p2List<Cube> cubes;
+
 	p2List<Sphere> s_coins;
+	
+	p2List<p2List_item<PhysBody3D*>*> coins_to_delete;
+	p2List<PhysBody3D*> b_coins;
+
 	//Circuit Paramenters
 	vec3 vec3_zero = { 0.0f,0.0f,0.0f };
 	vec3 axis_x = { 1.0f,0.0f,0.0f }, axis_y = { 0.0f,1.0f,0.0f }, axis_z = { 0.0f,0.0f,1.0f };

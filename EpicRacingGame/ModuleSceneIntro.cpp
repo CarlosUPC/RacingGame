@@ -48,6 +48,24 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	return UPDATE_CONTINUE;
 }
+
+
+update_status ModuleSceneIntro::PostUpdate(float dt)
+{
+	p2List_item<p2List_item<PhysBody3D*>*>* iterator = coins_to_delete.getFirst();
+	while (iterator != nullptr)
+	{
+		p2List_item<p2List_item<PhysBody3D*>*>* next = iterator->next;
+		b_coins.del(iterator->data);
+		coins_to_delete.del(iterator);
+		iterator = next;
+	}
+	coins_to_delete.clear();
+
+	return UPDATE_CONTINUE;
+}
+
+
 void ModuleSceneIntro::LoadCheckPoints() {
 
 	check_points[0] = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x, vec3_zero.y, vec3_zero.z + ROAD_DIM.z*6), true);
@@ -57,8 +75,10 @@ void ModuleSceneIntro::LoadCheckPoints() {
 
 void ModuleSceneIntro::LoadCoins() {
 
-	coins[0] = CreateCoin(1.0f, vec3(vec3_zero.x, vec3_zero.y + 1, vec3_zero.z + ROAD_DIM.z * 6), Yellow, true);
-	coins[0]->collision_listeners.add(this);
+	CreateCoin(1.0f, vec3(vec3_zero.x, vec3_zero.y + 1, vec3_zero.z + ROAD_DIM.z * 6), Yellow, true);
+	//coins[0]->SetAsSensor(true);
+	//coins[0]->collision_listeners.add(this);
+
 }
 
 
@@ -80,12 +100,23 @@ void ModuleSceneIntro::PrintCircuit() {
 		cubes_item = cubes_item->next;
 	}
 
-	p2List_item<Sphere>* sphere_item = s_coins.getFirst();
+	Sphere coin(1.0);
+	coin.color = Yellow;
+
+	for (p2List_item<PhysBody3D*>* iterator = b_coins.getFirst(); iterator != nullptr; iterator = iterator->next)
+	{
+		iterator->data->GetTransform(&coin.transform);
+		coin.Render();
+	}
+
+	/*p2List_item<Sphere>* sphere_item = s_coins.getFirst();            // previous method to render sphere coins (primitive)
+	
 	while (sphere_item != nullptr) {
-		sphere_item->data.Render();
+		if(sphere_item->data.to_delete == false)
+		       sphere_item->data.Render();
 
 		sphere_item = sphere_item->next;
-	}
+	}*/
 }
 
 
@@ -118,8 +149,10 @@ PhysBody3D* ModuleSceneIntro::CreateCoin(float radius, vec3 pos, Color color, bo
 
 	PhysBody3D* coin = App->physics->AddBody(s, 0.0f);
 	coin->SetAsSensor(sensor);
-	
-	s_coins.add(s);
+	coin->collision_listeners.add(this);
+
+	b_coins.add(coin);
+	//s_coins.add(s);
 	return coin;
 }
 
@@ -165,6 +198,24 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 
 	if (body1 == check_points[0] && body2 == (PhysBody3D*)App->player->vehicle) {
 		current_checkpoint = 1;
-		LOG("LA PARASTE DE PECHO COLORAAAAAAAAO!!!!!!!!! &d",current_checkpoint);
+		LOG("LA PARASTE DE PECHO COLORAAAAAAAAO!!!!!!!!! &d", current_checkpoint);
 	}
+
+
+	if (body2 == (PhysBody3D*)App->player->vehicle) {
+
+		for (p2List_item<PhysBody3D*>* iterator = b_coins.getFirst(); iterator != nullptr; iterator = iterator->next)
+		{
+			if (body1 == iterator->data) {
+				coins_to_delete.add(iterator);
+
+			}
+		}
+
+	}
+
+	/*if (body1 == coins[0] && body2 == (PhysBody3D*)App->player->vehicle) {            // First method to delete coin phys bodies
+				App->physics->DeleteBody(coins[0]);
+		}*/
+
 }
