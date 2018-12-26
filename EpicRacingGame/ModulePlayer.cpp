@@ -145,7 +145,26 @@ update_status ModulePlayer::Update(float dt)
 
 	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 	{
-		brake = BRAKE_POWER;
+		//brake = BRAKE_POWER;
+		acceleration = -MAX_ACCELERATION;
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+		is_jumping = true;
+
+	if (is_jumping)
+	{
+		jumping_time += 0.1f;
+
+		if (jumping_time <= 3.0f)
+			vehicle->Push(0, 200, 0);
+
+		else
+		{
+			jumping_time = 0.0f;
+			vehicle->Push(0, -130, 0);
+			is_jumping = false;
+		}
 	}
 
 	//----------------------RESTART-----------------------//
@@ -198,6 +217,8 @@ update_status ModulePlayer::Update(float dt)
 
 	return UPDATE_CONTINUE;
 }
+
+
 
 
 

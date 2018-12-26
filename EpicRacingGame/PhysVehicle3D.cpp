@@ -140,3 +140,8 @@ float PhysVehicle3D::GetKmh() const
 {
 	return vehicle->getCurrentSpeedKmHour();
 }
+
+void PhysVehicle3D::CarJump(float delta)
+{
+	
+}
