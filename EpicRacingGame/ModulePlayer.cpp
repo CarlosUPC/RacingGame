@@ -110,6 +110,7 @@ bool ModulePlayer::Start()
 	car.wheels[3].steering = false;
 
 	vehicle = App->physics->AddVehicle(car);
+	position = initial_position;
 	vehicle->SetPos(position.x, position.y, position.z);
 	
 	return true;
@@ -174,9 +175,10 @@ update_status ModulePlayer::Update(float dt)
 
 		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
 		vehicle->body->setAngularVelocity(btVector3(0, 0, 0));
+		
 		IdentityMatrix = I_MAT;
 		vehicle->SetTransform(IdentityMatrix.M);
-
+		vehicle->SetPos(initial_position.x, initial_position.y, initial_position.z);
 		App->scene_intro->minutes = 1;
 		App->scene_intro->seconds = 60.0f;
 	}

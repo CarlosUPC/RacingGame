@@ -19,7 +19,7 @@ bool ModuleSceneIntro::Start()
 	minutes = 1;
 	seconds = 60.0f;
 	App->camera->Move(vec3(0.0f, 25.0f, -15.0f));
-	App->camera->LookAt(vec3(App->player->position.x, App->player->position.y, App->player->position.z));
+	App->camera->LookAt(vec3(App->player->initial_position.x, App->player->initial_position.y, App->player->initial_position.z));
 	LoadCheckPoints();
 	LoadCircuit();
 	LoadCoins();
