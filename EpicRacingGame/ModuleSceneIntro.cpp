@@ -18,9 +18,8 @@ bool ModuleSceneIntro::Start()
 	bool ret = true;
 	minutes = 1;
 	seconds = 60.0f;
-	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
-	App->camera->LookAt(vec3(0, 0, 0));
-    
+	App->camera->Move(vec3(0.0f, 25.0f, -15.0f));
+	App->camera->LookAt(vec3(App->player->position.x, App->player->position.y, App->player->position.z));
 	LoadCheckPoints();
 	LoadCircuit();
 	LoadCoins();
@@ -97,10 +96,10 @@ void ModuleSceneIntro::LoadCoins() {
 
 void ModuleSceneIntro::LoadCircuit() {
 
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y, vec3_zero.x), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y, vec3_zero.x + ROAD_DIM.z), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y, vec3_zero.x + ROAD_DIM.z *2), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y + 0.8f, vec3_zero.x + ROAD_DIM.z * 3 - 0.25f), White, -20.0f, axis_x);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y + 20, vec3_zero.x), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z *2), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y + 0.8f + 20, vec3_zero.x + ROAD_DIM.z * 3 - 0.25f), White, -20.0f, axis_x);
 }
 
 void ModuleSceneIntro::PrintCircuit() {

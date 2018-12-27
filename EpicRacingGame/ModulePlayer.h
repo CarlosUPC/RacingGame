@@ -26,6 +26,7 @@ public:
 	float turn;
 	float acceleration;
 	float brake;
+	vec3 position = { 0.0f,20.0f,0.0f };
 	vec3 current_position;
 	btVector3 jumping_gravity;
 	bool is_jumping = false;

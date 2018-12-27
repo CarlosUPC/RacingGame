@@ -110,7 +110,7 @@ bool ModulePlayer::Start()
 	car.wheels[3].steering = false;
 
 	vehicle = App->physics->AddVehicle(car);
-	vehicle->SetPos(0, 12, 10);
+	vehicle->SetPos(position.x, position.y, position.z);
 	
 	return true;
 }
@@ -212,7 +212,7 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->Brake(brake);
 
 	vehicle->Render();
-	
+	vehicle->GetPos(position.x, position.y, position.z);
 	char title[80];
 
 	sprintf_s(title, "%.1f Km/h,CheckPoint: %i, Time: %i:%.1f, Coins: %i, Radio: %s",vehicle->GetKmh(), App->scene_intro->current_checkpoint, App->scene_intro->minutes, App->scene_intro->seconds, App->scene_intro->current_coins, App->scene_intro->song.GetString());
