@@ -99,7 +99,7 @@ void ModuleSceneIntro::LoadCircuit() {
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y + 20, vec3_zero.x), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z *2), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y + 0.8f + 20, vec3_zero.x + ROAD_DIM.z * 3 - 0.25f), White, -20.0f, axis_x);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x, vec3_zero.y + 1.6f + 20, vec3_zero.x + ROAD_DIM.z * 3 - 0.25f), White, -20.0f, axis_x);
 }
 
 void ModuleSceneIntro::PrintCircuit() {
