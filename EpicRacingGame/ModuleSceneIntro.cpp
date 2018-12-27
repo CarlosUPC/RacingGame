@@ -35,19 +35,26 @@ bool ModuleSceneIntro::CleanUp()
 
 	return true;
 }
+update_status ModuleSceneIntro::PreUpdate(float dt) {
 
-// Update
-update_status ModuleSceneIntro::Update(float dt)
-{
-	Plane p(0, 1, 0, 0);
-	p.axis = true;
-	p.Render();
-	
-	if (App->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN && indexMusic != 3)
+if (App->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN && indexMusic != 3)
 		indexMusic += 1;
 	else if (App->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN && indexMusic == 3)
 		indexMusic = 0;
 
+return UPDATE_CONTINUE;
+}
+
+
+// Update
+update_status ModuleSceneIntro::Update(float dt)
+{
+	
+	Plane p(0, 1, 0, 0);
+	p.axis = true;
+	p.Render();
+	
+	
 	Radio();
 	Timer(dt);
 	PrintCircuit();
