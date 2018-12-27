@@ -207,6 +207,7 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 		for (p2List_item<PhysBody3D*>* iterator = b_coins.getFirst(); iterator != nullptr; iterator = iterator->next)
 		{
 			if (body1 == iterator->data) {
+				current_coins += 1;
 				coins_to_delete.add(iterator);
 
 			}

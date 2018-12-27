@@ -72,7 +72,7 @@ public:
 	PhysBody3D* check_points[9] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr , nullptr };
 	PhysBody3D* coins[9] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr , nullptr };
 	uint current_checkpoint = 0;
-
+	uint current_coins = 0;
 	//Timer
 	int minutes = 0;
 	float seconds = 0;

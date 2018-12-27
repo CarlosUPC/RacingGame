@@ -212,7 +212,7 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->Render();
 
 	char title[80];
-	sprintf_s(title, "%.1f Km/h, Checkpoint: %i, Time: %i:%.1f", vehicle->GetKmh(), App->scene_intro->current_checkpoint, App->scene_intro->minutes, App->scene_intro->seconds);
+	sprintf_s(title, "Current Speed: %.1f Km/h, Checkpoint: %i, Time: %i:%.1f, Coins: %i", vehicle->GetKmh(), App->scene_intro->current_checkpoint, App->scene_intro->minutes, App->scene_intro->seconds, App->scene_intro->current_coins);
 	App->window->SetTitle(title);
 
 	return UPDATE_CONTINUE;
