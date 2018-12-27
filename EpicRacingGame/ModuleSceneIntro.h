@@ -3,10 +3,13 @@
 #include "p2DynArray.h"
 #include "Globals.h"
 #include "Primitive.h"
+#include "p2SString.h"
 
 #define MAX_SNAKE 2
 #define ROAD_DIM vec3(5,0.5,5)
 #define SENSOR_DIM vec3(5,2,2)
+#define MAX_MUSIC 3
+
 
 struct PhysBody3D;
 struct PhysMotor3D;
@@ -33,6 +36,7 @@ public:
 	PhysBody3D* CreateCheckPoints(vec3 dimension = { 1.0f,1.0f,1.0f }, vec3 position = { 0.0f, 0.0f, 0.0f }, bool sensor = false);
 	
 	void Timer(float dt);
+	void Radio();
 public:
 	/*
 	PhysBody3D* pb_snake[MAX_SNAKE];
@@ -73,8 +77,14 @@ public:
 	PhysBody3D* coins[9] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr , nullptr };
 	uint current_checkpoint = 0;
 	uint current_coins = 0;
+
 	//Timer
 	int minutes = 0;
 	float seconds = 0;
 	bool finishedTime = false;
+
+	// Music
+	uint indexMusic = 0;
+	bool song1_active = true, song2_active = false, song3_active = false, song4_active = false;
+	p2SString song = "Pokemon";
 };

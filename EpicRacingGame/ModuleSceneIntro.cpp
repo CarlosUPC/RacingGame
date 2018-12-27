@@ -43,6 +43,12 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.axis = true;
 	p.Render();
 	
+	if (App->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN && indexMusic != 3)
+		indexMusic += 1;
+	else if (App->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN && indexMusic == 3)
+		indexMusic = 0;
+
+	Radio();
 	Timer(dt);
 	PrintCircuit();
 
@@ -168,7 +174,34 @@ PhysBody3D* ModuleSceneIntro::CreateCheckPoints(vec3 dim, vec3 pos, bool sensor)
 
 	return tmp;
 }
-
+void ModuleSceneIntro::Radio()
+{
+	if (indexMusic == 0 && !song1_active)
+	{
+		song = "Naruto";
+		song1_active = true;
+		song4_active = false;
+	}
+	else if (indexMusic == 1 && !song2_active)
+	{
+		song = "Dragon Ball";
+		song1_active = false;
+		song2_active = true;
+	}
+	else if (indexMusic == 2 && !song3_active)
+	{
+		
+		song = "One Piece";
+		song2_active = false;
+		song3_active = true;
+	}
+	else if (indexMusic == 3 && !song4_active)
+	{
+		song = "Willyrex";
+		song3_active = false;
+		song4_active = true;
+	}
+}
 
 void ModuleSceneIntro::Timer(float dt)
 {

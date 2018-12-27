@@ -5,6 +5,8 @@
 #include "PhysVehicle3D.h"
 #include "PhysBody3D.h"
 
+
+
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled), vehicle(NULL)
 {
 	turn = acceleration = brake = 0.0f;
@@ -210,9 +212,10 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->Brake(brake);
 
 	vehicle->Render();
-
+	
 	char title[80];
-	sprintf_s(title, "Current Speed: %.1f Km/h, Checkpoint: %i, Time: %i:%.1f, Coins: %i", vehicle->GetKmh(), App->scene_intro->current_checkpoint, App->scene_intro->minutes, App->scene_intro->seconds, App->scene_intro->current_coins);
+
+	sprintf_s(title, "%.1f Km/h,CheckPoint: %i, Time: %i:%.1f, Coins: %i, Radio: %s",vehicle->GetKmh(), App->scene_intro->current_checkpoint, App->scene_intro->minutes, App->scene_intro->seconds, App->scene_intro->current_coins, App->scene_intro->song.GetString());
 	App->window->SetTitle(title);
 
 	return UPDATE_CONTINUE;
