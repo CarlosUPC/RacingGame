@@ -170,8 +170,36 @@ update_status ModulePlayer::Update(float dt)
 		}
 	}
 
+	//--------------------WIN CONDITION----------------------//
+	if (App->scene_intro->win || App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN)
+	{
+		App->scene_intro->win = true;
+		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
+		vehicle->body->setAngularVelocity(btVector3(0, 0, 0));
+		IdentityMatrix = I_MAT;
+		vehicle->SetTransform(IdentityMatrix.M);
+		vehicle->SetPos(initial_position.x, initial_position.y - 20, initial_position.z);
+	}
+
+	//--------------------LOSE CONDITION----------------------//
+	if (App->scene_intro->lose || App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+	{
+		App->scene_intro->lose = true;
+		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
+		vehicle->body->setAngularVelocity(btVector3(0, 0, 0));
+		IdentityMatrix = I_MAT;
+		vehicle->SetTransform(IdentityMatrix.M);
+		vehicle->SetPos(initial_position.x, initial_position.y - 20, initial_position.z);
+	}
+
+
+
+
 	//----------------------RESTART-----------------------//
 	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN) {
+		
+		App->scene_intro->lose = false;
+		App->scene_intro->win = false;
 
 		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
 		vehicle->body->setAngularVelocity(btVector3(0, 0, 0));
@@ -220,8 +248,14 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->Render();
 	vehicle->GetPos(position.x, position.y, position.z);
 	char title[80];
-
-	sprintf_s(title, "%.1f Km/h,CheckPoint: %i, Time: %i:%.1f, Coins: %i, Radio: %s",vehicle->GetKmh(), App->scene_intro->current_checkpoint, App->scene_intro->minutes, App->scene_intro->seconds, App->scene_intro->current_coins, App->scene_intro->song.GetString());
+	
+	if (!App->scene_intro->win && !App->scene_intro->lose)
+		sprintf_s(title, "%.1f Km/h,CheckPoint: %i, Time: %i:%.1f, Coins: %i, Radio: %s",vehicle->GetKmh(), App->scene_intro->current_checkpoint, App->scene_intro->minutes, App->scene_intro->seconds, App->scene_intro->current_coins, App->scene_intro->song.GetString());
+	else if (App->scene_intro->win)
+		sprintf_s(title, "CONGRATS! YOU WON!!! PRESS ""R"" TO START AGAIN");
+	else if (App->scene_intro->lose)
+		sprintf_s(title, "WHAT A PITY! YOU LOST!!! PRESS ""R"" TO START AGAIN");
+	
 	App->window->SetTitle(title);
 
 	return UPDATE_CONTINUE;

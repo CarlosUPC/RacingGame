@@ -21,6 +21,7 @@ bool ModuleSceneIntro::Start()
 	seconds = 60.0f;
 	App->camera->Move(vec3(0.0f, 25.0f, -15.0f));
 	App->camera->LookAt(vec3(App->player->initial_position.x, App->player->initial_position.y, App->player->initial_position.z));
+	
 	LoadCheckPoints();
 	LoadCircuit();
 	LoadCoins();
@@ -232,6 +233,7 @@ void ModuleSceneIntro::Timer(float dt)
 	else if (finishedTime == true) {
 		seconds = 0.0f;
 		minutes = 0;
+		lose = true;
 	}
 }
 
@@ -266,13 +268,10 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 			break;
 		}
 
-
-		
-		
-
-		
-
-
+	}
+	if (body1 == deathLine && body2 == (PhysBody3D*)App->player->vehicle) {
+		if (current_checkpoint == 4)
+			win = true;
 	}
 
 	if (body2 == (PhysBody3D*)App->player->vehicle) {
@@ -280,6 +279,7 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 		for (p2List_item<PhysBody3D*>* iterator = b_coins.getFirst(); iterator != nullptr; iterator = iterator->next)
 		{
 			if (body1 == iterator->data) {
+				App->player->vehicle->Push(0.0f, 0.0f, 200.0f);
 				current_coins += 1;
 				coins_to_delete.add(iterator);
 

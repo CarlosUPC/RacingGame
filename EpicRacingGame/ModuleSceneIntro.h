@@ -89,4 +89,9 @@ public:
 	uint indexMusic = 0;
 	bool song1_active = true, song2_active = false, song3_active = false, song4_active = false;
 	p2SString song = "Pokemon";
+
+	//Win - Lose Condition
+	PhysBody3D* deathLine = nullptr;
+    bool win = false;
+	bool lose = false;
 };
