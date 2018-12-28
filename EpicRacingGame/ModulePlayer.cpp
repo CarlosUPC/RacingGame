@@ -248,7 +248,7 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->Brake(brake);
 
 	vehicle->Render();
-	vehicle->GetPos(position.x, position.y, position.z);
+	//vehicle->GetPos(position.x, position.y, position.z);
 	char title[80];
 	
 	if (!App->scene_intro->win && !App->scene_intro->lose)
