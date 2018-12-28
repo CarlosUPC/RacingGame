@@ -8,6 +8,7 @@
 #define MAX_SNAKE 2
 #define ROAD_DIM vec3(10,0.5,10)
 #define SENSOR_DIM vec3(5,2,2)
+#define RESPAWN_DIM vec3(200,5,200)
 #define MAX_MUSIC 3
 
 

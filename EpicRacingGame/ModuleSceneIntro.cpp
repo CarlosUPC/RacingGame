@@ -3,7 +3,8 @@
 #include "ModuleSceneIntro.h"
 #include "Primitive.h"
 #include "PhysBody3D.h"
-
+#include "ModulePlayer.h"
+#include "PhysVehicle3D.h"
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 }
@@ -83,6 +84,8 @@ void ModuleSceneIntro::LoadCheckPoints() {
 	check_points[0] = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x, vec3_zero.y, vec3_zero.z + ROAD_DIM.z*6), true);
 	check_points[0]->collision_listeners.add(this);
 	
+	check_points[1] = CreateCheckPoints(RESPAWN_DIM, vec3(vec3_zero.x, vec3_zero.y + 5, vec3_zero.z), true);
+	check_points[1]->collision_listeners.add(this);
 }
 
 void ModuleSceneIntro::LoadCoins() {
@@ -239,7 +242,38 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 		current_checkpoint = 1;
 		LOG("LA PARASTE DE PECHO COLORAAAAAAAAO!!!!!!!!! &d", current_checkpoint);
 	}
+	if (body1 == check_points[1] && body2 == (PhysBody3D*)App->player->vehicle) {
+		
+		App->player->vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
+		App->player->vehicle->body->setAngularVelocity(btVector3(0, 0, 0));
+		IdentityMatrix = I_MAT;
 
+		switch (App->scene_intro->current_checkpoint) {
+
+		case 0:
+			App->player->vehicle->SetTransform(IdentityMatrix.M);
+			App->player->vehicle->SetPos(App->player->initial_position.x, App->player->initial_position.y, App->player->initial_position.z);
+			break;
+		case 1:
+			App->player->vehicle->SetTransform(IdentityMatrix.M);
+			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x, App->scene_intro->vec3_zero.y, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 6);
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		}
+
+
+		
+		
+
+		
+
+
+	}
 
 	if (body2 == (PhysBody3D*)App->player->vehicle) {
 
