@@ -81,7 +81,7 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 
 void ModuleSceneIntro::LoadCheckPoints() {
 
-	check_points[0] = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x, vec3_zero.y, vec3_zero.z + ROAD_DIM.z*6), true);
+	check_points[0] = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x, vec3_zero.y + 23, vec3_zero.z + ROAD_DIM.z*2), true);
 	check_points[0]->collision_listeners.add(this);
 	
 	check_points[1] = CreateCheckPoints(RESPAWN_DIM, vec3(vec3_zero.x, vec3_zero.y + 5, vec3_zero.z), true);
@@ -90,7 +90,7 @@ void ModuleSceneIntro::LoadCheckPoints() {
 
 void ModuleSceneIntro::LoadCoins() {
 
-	CreateCoin(1.0f, vec3(vec3_zero.x, vec3_zero.y + 1, vec3_zero.z + ROAD_DIM.z * 6), Yellow, true);
+	CreateCoin(1.0f, vec3(vec3_zero.x, vec3_zero.y + 22, vec3_zero.z + ROAD_DIM.z + 5), Yellow, true);
 	//coins[0]->SetAsSensor(true);
 	//coins[0]->collision_listeners.add(this);
 
@@ -256,7 +256,7 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 			break;
 		case 1:
 			App->player->vehicle->SetTransform(IdentityMatrix.M);
-			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x, App->scene_intro->vec3_zero.y, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 6);
+			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x, App->scene_intro->vec3_zero.y + 20, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 2);
 			break;
 		case 2:
 			break;

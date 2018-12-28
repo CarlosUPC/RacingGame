@@ -179,6 +179,10 @@ update_status ModulePlayer::Update(float dt)
 		IdentityMatrix = I_MAT;
 		vehicle->SetTransform(IdentityMatrix.M);
 		vehicle->SetPos(initial_position.x, initial_position.y, initial_position.z);
+
+
+		App->scene_intro->current_coins = 0;
+		App->scene_intro->current_checkpoint = 0;
 		App->scene_intro->minutes = 1;
 		App->scene_intro->seconds = 60.0f;
 	}
@@ -195,7 +199,7 @@ update_status ModulePlayer::Update(float dt)
 			break;
 		case 1:
 			vehicle->SetTransform(IdentityMatrix.M);
-			vehicle->SetPos(App->scene_intro->vec3_zero.x, App->scene_intro->vec3_zero.y, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 6);
+			vehicle->SetPos(App->scene_intro->vec3_zero.x, App->scene_intro->vec3_zero.y + 20, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 2);
 			break;
 		case 2:
 			break;
