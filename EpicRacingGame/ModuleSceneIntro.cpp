@@ -33,6 +33,19 @@ bool ModuleSceneIntro::Start()
 bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");
+	for (p2List_item<PhysBody3D*>* iterator = b_coins.getFirst(); iterator != nullptr; iterator = iterator->next)
+			coins_to_delete.add(iterator);
+	
+	p2List_item<p2List_item<PhysBody3D*>*>* iterator = coins_to_delete.getFirst();
+	
+	while (iterator != nullptr)
+	{
+		p2List_item<p2List_item<PhysBody3D*>*>* next = iterator->next;
+		b_coins.del(iterator->data);
+		coins_to_delete.del(iterator);
+		iterator = next;
+	}
+	coins_to_delete.clear();
 
 	return true;
 }

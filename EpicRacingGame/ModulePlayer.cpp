@@ -207,8 +207,9 @@ update_status ModulePlayer::Update(float dt)
 		IdentityMatrix = I_MAT;
 		vehicle->SetTransform(IdentityMatrix.M);
 		vehicle->SetPos(initial_position.x, initial_position.y, initial_position.z);
-
-
+		
+		App->scene_intro->CleanUp();
+		App->scene_intro->LoadCoins();
 		App->scene_intro->current_coins = 0;
 		App->scene_intro->current_checkpoint = 0;
 		App->scene_intro->minutes = 1;
@@ -223,7 +224,8 @@ update_status ModulePlayer::Update(float dt)
 		switch (App->scene_intro->current_checkpoint) {
 
 		case 0:
-			vehicle->SetTransform(IdentityMatrix.M);
+			App->player->vehicle->SetTransform(IdentityMatrix.M);
+			App->player->vehicle->SetPos(App->player->initial_position.x, App->player->initial_position.y, App->player->initial_position.z);
 			break;
 		case 1:
 			vehicle->SetTransform(IdentityMatrix.M);
