@@ -208,6 +208,7 @@ update_status ModulePlayer::Update(float dt)
 		vehicle->SetTransform(IdentityMatrix.M);
 		vehicle->SetPos(initial_position.x, initial_position.y, initial_position.z);
 		
+		App->scene_intro->finishedTime = false;
 		App->scene_intro->CleanUp();
 		App->scene_intro->LoadCoins();
 		App->scene_intro->current_coins = 0;
