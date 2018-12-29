@@ -8,7 +8,8 @@
 #define MAX_SNAKE 2
 #define ROAD_DIM vec3(10,0.5,10)
 #define SENSOR_DIM vec3(10,2,2)
-#define RESPAWN_DIM vec3(200,5,200)
+#define SENSOR_DIM2 vec3(2,2,10)
+#define RESPAWN_DIM vec3(500,5,500)
 #define MAX_MUSIC 3
 
 
@@ -77,7 +78,7 @@ public:
 	//Sensors
 	PhysBody3D* check_points[9] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr , nullptr };
 	PhysBody3D* coins[9] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr , nullptr };
-	uint current_checkpoint = 0;
+	uint current_checkpoint = 5;
 	uint current_coins = 0;
 
 	//Timer

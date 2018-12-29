@@ -232,14 +232,27 @@ update_status ModulePlayer::Update(float dt)
 			App->player->vehicle->SetPos(App->player->initial_position.x, App->player->initial_position.y, App->player->initial_position.z);
 			break;
 		case 1:
-			vehicle->SetTransform(IdentityMatrix.M);
-			vehicle->SetPos(App->scene_intro->vec3_zero.x, App->scene_intro->vec3_zero.y + 20, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 2);
+			App->player->vehicle->SetTransform(IdentityMatrix.M);
+			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x, App->scene_intro->vec3_zero.y + 20, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 9);
 			break;
 		case 2:
+			App->player->vehicle->SetTransform(IdentityMatrix.M);
+			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x + ROAD_DIM.x * 8, App->scene_intro->vec3_zero.y + 20, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 12);
 			break;
 		case 3:
+			App->player->vehicle->SetTransform(IdentityMatrix.rotate(-90.0f, vec3(0.0f, 1.0f, 0.0f)).M);
+			IdentityMatrix.rotate(90.0f, vec3(0.0f, 1.0f, 0.0f));
+			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x + ROAD_DIM.x * -2, App->scene_intro->vec3_zero.y + 20, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 18);
 			break;
 		case 4:
+			App->player->vehicle->SetTransform(IdentityMatrix.rotate(180.0f, vec3(0.0f, 1.0f, 0.0f)).M);
+			IdentityMatrix.rotate(180.0f, vec3(0.0f, 1.0f, 0.0f));
+			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x + ROAD_DIM.x * -4, App->scene_intro->vec3_zero.y + 20, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 9);
+			break;
+		case 5:
+			App->player->vehicle->SetTransform(IdentityMatrix.rotate(90.0f, vec3(0.0f, 1.0f, 0.0f)).M);
+			IdentityMatrix.rotate(-90.0f, vec3(0.0f, 1.0f, 0.0f));
+			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x + ROAD_DIM.x * -3, App->scene_intro->vec3_zero.y + 32, App->scene_intro->vec3_zero.z + ROAD_DIM.z * -4);
 			break;
 		}
 

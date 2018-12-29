@@ -95,11 +95,28 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 
 void ModuleSceneIntro::LoadCheckPoints() {
 
-	check_points[0] = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x, vec3_zero.y + 23, vec3_zero.z + ROAD_DIM.z*2), true);
-	check_points[0]->collision_listeners.add(this);
 	
-	check_points[1] = CreateCheckPoints(RESPAWN_DIM, vec3(vec3_zero.x, vec3_zero.y + 5, vec3_zero.z), true);
+	check_points[1] = CreateCheckPoints(RESPAWN_DIM, vec3(vec3_zero.x, vec3_zero.y + 5, vec3_zero.z + ROAD_DIM.z * 4), true); // DEATH SENSOR
 	check_points[1]->collision_listeners.add(this);
+
+	check_points[0] = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x, vec3_zero.y + 23, vec3_zero.z + ROAD_DIM.z * 9), true);
+	check_points[0]->collision_listeners.add(this);
+
+	check_points[2] = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 23, vec3_zero.z + ROAD_DIM.z * 12), true);
+	check_points[2]->collision_listeners.add(this);
+
+	check_points[3] = CreateCheckPoints(SENSOR_DIM2, vec3(vec3_zero.x + ROAD_DIM.x * -2, vec3_zero.y + 23, vec3_zero.z + ROAD_DIM.z * 18), true);
+	check_points[3]->collision_listeners.add(this);
+
+	check_points[4] = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -4, vec3_zero.y + 23, vec3_zero.z + ROAD_DIM.z * 9), true);
+	check_points[4]->collision_listeners.add(this);
+
+	check_points[5] = CreateCheckPoints(SENSOR_DIM2, vec3(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 33, vec3_zero.z + ROAD_DIM.z * -4), true);
+	check_points[5]->collision_listeners.add(this);
+
+	deathLine = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 33, vec3_zero.z + ROAD_DIM.z + 6), true);
+	deathLine->collision_listeners.add(this);
+	
 }
 
 void ModuleSceneIntro::LoadCoins() {
@@ -229,7 +246,7 @@ void ModuleSceneIntro::LoadCircuit() {
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -2), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -1), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * 1), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * 2), White); // FINISH
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * 2), Red); // FINISH
 }
 
 void ModuleSceneIntro::PrintCircuit() {
@@ -366,11 +383,27 @@ void ModuleSceneIntro::Timer(float dt)
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 
-	if (body1 == check_points[0] && body2 == (PhysBody3D*)App->player->vehicle) {
+	if (body1 == check_points[0] && body2 == (PhysBody3D*)App->player->vehicle)  // FIRST CHECKPOINT
 		current_checkpoint = 1;
-		LOG("LA PARASTE DE PECHO COLORAAAAAAAAO!!!!!!!!! &d", current_checkpoint);
-	}
-	if (body1 == check_points[1] && body2 == (PhysBody3D*)App->player->vehicle) {
+		
+
+	if (body1 == check_points[2] && body2 == (PhysBody3D*)App->player->vehicle)  // SECOND CHECKPOINT
+		current_checkpoint = 2;
+		
+
+	if (body1 == check_points[3] && body2 == (PhysBody3D*)App->player->vehicle)  // THIRD CHECKPOINT
+		current_checkpoint = 3;
+		
+	
+	if (body1 == check_points[4] && body2 == (PhysBody3D*)App->player->vehicle)  // FOURTH CHECKPOINT
+		current_checkpoint = 4;
+
+
+	if (body1 == check_points[5] && body2 == (PhysBody3D*)App->player->vehicle)  // FIFTH CHECKPOINT
+		current_checkpoint = 5;
+
+	
+	if (body1 == check_points[1] && body2 == (PhysBody3D*)App->player->vehicle) { // DEATH SENSOR
 		
 		App->player->vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
 		App->player->vehicle->body->setAngularVelocity(btVector3(0, 0, 0));
@@ -384,19 +417,33 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 			break;
 		case 1:
 			App->player->vehicle->SetTransform(IdentityMatrix.M);
-			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x, App->scene_intro->vec3_zero.y + 20, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 2);
+			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x, App->scene_intro->vec3_zero.y + 20, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 9);
 			break;
 		case 2:
+			App->player->vehicle->SetTransform(IdentityMatrix.M);
+			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x + ROAD_DIM.x * 8, App->scene_intro->vec3_zero.y + 20, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 12);
 			break;
 		case 3:
+			App->player->vehicle->SetTransform(IdentityMatrix.rotate(-90.0f, vec3(0.0f, 1.0f, 0.0f)).M);
+			IdentityMatrix.rotate(90.0f, vec3(0.0f, 1.0f, 0.0f));
+			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x + ROAD_DIM.x * -2, App->scene_intro->vec3_zero.y + 20, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 18);
 			break;
 		case 4:
+			App->player->vehicle->SetTransform(IdentityMatrix.rotate(180.0f, vec3(0.0f, 1.0f, 0.0f)).M);
+			IdentityMatrix.rotate(180.0f, vec3(0.0f, 1.0f, 0.0f));
+			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x + ROAD_DIM.x * -4, App->scene_intro->vec3_zero.y + 20, App->scene_intro->vec3_zero.z + ROAD_DIM.z * 9);
+			break;
+		case 5:
+			App->player->vehicle->SetTransform(IdentityMatrix.rotate(90.0f, vec3(0.0f, 1.0f, 0.0f)).M);
+			IdentityMatrix.rotate(-90.0f, vec3(0.0f, 1.0f, 0.0f));
+			App->player->vehicle->SetPos(App->scene_intro->vec3_zero.x + ROAD_DIM.x * -3, App->scene_intro->vec3_zero.y + 32, App->scene_intro->vec3_zero.z + ROAD_DIM.z * -4);
 			break;
 		}
 
 	}
-	if (body1 == deathLine && body2 == (PhysBody3D*)App->player->vehicle) {
-		if (current_checkpoint == 4)
+
+	if (body1 == deathLine && body2 == (PhysBody3D*)App->player->vehicle) { // FINAL LINE
+		if (current_checkpoint == 5)
 			win = true;
 	}
 
