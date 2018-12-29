@@ -17,8 +17,12 @@ bool ModuleSceneIntro::Start()
 {
 	LOG("Loading Intro assets");
 	bool ret = true;
+	
+	//Insert PlayMusic();
+	//Insert LoadFx();
 	minutes = 1;
 	seconds = 60.0f;
+	
 	App->camera->Move(vec3(0.0f, 25.0f, -15.0f));
 	App->camera->LookAt(vec3(App->player->initial_position.x, App->player->initial_position.y, App->player->initial_position.z));
 	
@@ -331,25 +335,28 @@ void ModuleSceneIntro::Radio()
 {
 	if (indexMusic == 0 && !song1_active)
 	{
+		//Insert PlayMusic();
 		song = "Naruto";
 		song1_active = true;
 		song4_active = false;
 	}
 	else if (indexMusic == 1 && !song2_active)
 	{
+		//Insert PlayMusic();
 		song = "Dragon Ball";
 		song1_active = false;
 		song2_active = true;
 	}
 	else if (indexMusic == 2 && !song3_active)
 	{
-		
+		//Insert PlayMusic();
 		song = "One Piece";
 		song2_active = false;
 		song3_active = true;
 	}
 	else if (indexMusic == 3 && !song4_active)
 	{
+		//Insert PlayMusic();
 		song = "Willyrex";
 		song3_active = false;
 		song4_active = true;
@@ -452,6 +459,7 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 		for (p2List_item<PhysBody3D*>* iterator = b_coins.getFirst(); iterator != nullptr; iterator = iterator->next)
 		{
 			if (body1 == iterator->data) {
+				//Insert PlayFx();
 				App->player->vehicle->Push(0.0f, 0.0f, 200.0f);
 				current_coins += 1;
 				coins_to_delete.add(iterator);

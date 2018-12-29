@@ -113,6 +113,7 @@ bool ModulePlayer::Start()
 	position = initial_position;
 	vehicle->SetPos(position.x, position.y, position.z);
 	
+	//Insert LoadFx();
 	return true;
 }
 
@@ -176,6 +177,7 @@ update_status ModulePlayer::Update(float dt)
 	//--------------------WIN CONDITION----------------------//
 	if (App->scene_intro->win || App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN)
 	{
+		//Insert PlayFx();
 		App->scene_intro->win = true;
 		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
 		vehicle->body->setAngularVelocity(btVector3(0, 0, 0));
@@ -187,6 +189,7 @@ update_status ModulePlayer::Update(float dt)
 	//--------------------LOSE CONDITION----------------------//
 	if (App->scene_intro->lose || App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 	{
+		//Insert PlayFx();
 		App->scene_intro->lose = true;
 		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
 		vehicle->body->setAngularVelocity(btVector3(0, 0, 0));
@@ -219,6 +222,7 @@ update_status ModulePlayer::Update(float dt)
 		App->scene_intro->minutes = 1;
 		App->scene_intro->seconds = 60.0f;
 	}
+
 	//-------------SPAWN TO CURRENT CHECKPOINT--------------//
 	if (App->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN) {
 
