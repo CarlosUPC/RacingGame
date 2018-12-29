@@ -152,22 +152,25 @@ update_status ModulePlayer::Update(float dt)
 		acceleration = -MAX_ACCELERATION;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && !is_jumping)
 		is_jumping = true;
 
 	if (is_jumping)
 	{
 		jumping_time += 0.1f;
 
-		if (jumping_time <= 3.0f)
+		if (jumping_time <= 5.0f)
 			vehicle->Push(0, 200, 0);
-
+		
 		else
-		{
-			jumping_time = 0.0f;
 			vehicle->Push(0, -130, 0);
+
+		if (jumping_time >= 12.0f)
+		{
 			is_jumping = false;
+			jumping_time = 0.0f;
 		}
+
 	}
 
 	//--------------------WIN CONDITION----------------------//

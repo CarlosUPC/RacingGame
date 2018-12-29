@@ -220,7 +220,7 @@ void ModuleSceneIntro::LoadCircuit() {
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -2), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -1), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * 1), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * 2), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * 2), White); // FINISH
 }
 
 void ModuleSceneIntro::PrintCircuit() {
