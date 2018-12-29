@@ -25,6 +25,10 @@ There are a set of checkpoints that save the player position and he will respawn
 
 As a gameplay mechanic, the player will be able to jump through certain obstacles.
 
+As a innovation, the car has a **radio** functionality that can update the song that you want to listen during the game. that's possible using the *Tab key* to swap between songs.
+
+While you are playing and the car is injured (you can't drive because car's overthrow), you can use the *C key* to respawn into last checkpoint.
+
 ## Main goal of the game
 
 Our main goal's game is complete the circuit before the timer reaches zero, otherwise he will lose the game.
@@ -37,6 +41,7 @@ Our main goal's game is complete the circuit before the timer reaches zero, othe
 * **DOWN ARROW** to move backward
 * **SPACE** to jump
 * **R** to restart the game
+* **TAB** to swap between songs
 
     ### Development controls
   
