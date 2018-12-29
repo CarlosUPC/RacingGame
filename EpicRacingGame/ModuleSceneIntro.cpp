@@ -104,7 +104,16 @@ void ModuleSceneIntro::LoadCheckPoints() {
 
 void ModuleSceneIntro::LoadCoins() {
 
-	CreateCoin(1.0f, vec3(vec3_zero.x, vec3_zero.y + 22, vec3_zero.z + ROAD_DIM.z + 5), Yellow, true);
+	CreateCoin(1.0f, vec3(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 22, vec3_zero.x + ROAD_DIM.z * 7), Yellow, true);
+	CreateCoin(1.0f, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 22, vec3_zero.x + ROAD_DIM.z * 10), Yellow, true);
+	CreateCoin(1.0f, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 22, vec3_zero.x + ROAD_DIM.z * 26), Yellow, true);
+	CreateCoin(1.0f, vec3(vec3_zero.x + ROAD_DIM.x * -13, vec3_zero.y + 22, vec3_zero.x + ROAD_DIM.z * 18), Yellow, true);
+	CreateCoin(1.0f, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 22, vec3_zero.x + ROAD_DIM.z * 18), Yellow, true);
+	CreateCoin(1.0f, vec3(vec3_zero.x + ROAD_DIM.x * -14, vec3_zero.y + 22, vec3_zero.x + ROAD_DIM.z * 13), Yellow, true);
+	CreateCoin(1.0f, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 22, vec3_zero.x + ROAD_DIM.z * 7), Yellow, true);
+	CreateCoin(1.0f, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 33, vec3_zero.x + ROAD_DIM.z * -4), Yellow, true);
+	CreateCoin(1.0f, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 33, vec3_zero.x + ROAD_DIM.z * -4), Yellow, true);
+
 	//coins[0]->SetAsSensor(true);
 	//coins[0]->collision_listeners.add(this);
 
@@ -127,7 +136,7 @@ void ModuleSceneIntro::LoadCircuit() {
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 5, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 10), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 6, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 10), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 7, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 10), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 10), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 10), White); // Coin
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 11), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 12), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 13), White);
@@ -140,7 +149,7 @@ void ModuleSceneIntro::LoadCircuit() {
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 22), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 24), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 25), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 26), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 26), White); // Coin
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 7, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 26), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 6, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 26), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 5, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 26), White);
@@ -151,7 +160,7 @@ void ModuleSceneIntro::LoadCircuit() {
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 21), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 20), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 19), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 18), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 18), White); // Coin
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 3, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 18), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 2, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 18), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 1, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 18), White);
@@ -167,12 +176,12 @@ void ModuleSceneIntro::LoadCircuit() {
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -10, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 18), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 18), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -12, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 18), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -13, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 18), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -13, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 18), White); // Coin
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -14, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 18), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -14, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 17), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -14, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 16), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -14, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 14), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -14, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 13), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -14, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 14), White); 
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -14, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 13), White); // Coin
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -13, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 13), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -12, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 13), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 13), White);
@@ -189,10 +198,10 @@ void ModuleSceneIntro::LoadCircuit() {
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -4, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 7), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -5, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 7), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -6, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 7), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 7), White); // Collectable
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 7), White); // Coin
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -9, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 7), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -10, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 7), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 7), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 7), White); // Coin
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 6), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 20, vec3_zero.x + ROAD_DIM.z * 5), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 1.6f + 20, vec3_zero.x + ROAD_DIM.z * 4), White, 15.0f, axis_x);
@@ -203,7 +212,7 @@ void ModuleSceneIntro::LoadCircuit() {
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -1), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -2), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -3), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -4), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -4), White); // Coin
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -10, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -4), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -9, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -4), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -8, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -4), White);
@@ -215,7 +224,7 @@ void ModuleSceneIntro::LoadCircuit() {
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 1, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -4), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 2, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -4), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 3, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -4), White);
-	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -4), White);
+	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -4), White); // Coin
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -3), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -2), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -1), White);
