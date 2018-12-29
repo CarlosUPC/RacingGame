@@ -4,6 +4,7 @@
 #include "Primitive.h"
 #include "PhysVehicle3D.h"
 #include "PhysBody3D.h"
+#include "ModuleAudio.h"
 
 
 
@@ -177,7 +178,7 @@ update_status ModulePlayer::Update(float dt)
 	//--------------------WIN CONDITION----------------------//
 	if (App->scene_intro->win || App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN)
 	{
-		//Insert PlayFx();
+		App->audio->PlayFx(3);
 		App->scene_intro->win = true;
 		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
 		vehicle->body->setAngularVelocity(btVector3(0, 0, 0));
@@ -189,7 +190,7 @@ update_status ModulePlayer::Update(float dt)
 	//--------------------LOSE CONDITION----------------------//
 	if (App->scene_intro->lose || App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 	{
-		//Insert PlayFx();
+		App->audio->PlayFx(2);
 		App->scene_intro->lose = true;
 		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
 		vehicle->body->setAngularVelocity(btVector3(0, 0, 0));
@@ -269,7 +270,7 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->Brake(brake);
 
 	vehicle->Render();
-	//vehicle->GetPos(position.x, position.y, position.z);
+	vehicle->GetPos(position.x, position.y, position.z);
 	char title[80];
 	
 	if (!App->scene_intro->win && !App->scene_intro->lose)

@@ -5,6 +5,8 @@
 #include "PhysBody3D.h"
 #include "ModulePlayer.h"
 #include "PhysVehicle3D.h"
+#include "ModuleAudio.h"
+
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 }
@@ -19,7 +21,11 @@ bool ModuleSceneIntro::Start()
 	bool ret = true;
 	
 	//Insert PlayMusic();
-	//Insert LoadFx();
+	//Insert 
+	App->audio->LoadFx("fx/coin_fx.wav");
+	App->audio->LoadFx("fx/game_over_fx.wav");
+	App->audio->LoadFx("fx/win_fx.wav");
+
 	minutes = 1;
 	seconds = 60.0f;
 	
@@ -30,6 +36,7 @@ bool ModuleSceneIntro::Start()
 	LoadCircuit();
 	LoadCoins();
 	LoadObstacles();
+	App->audio->PlayMusic("music/Naruto_op_16.ogg");
 
 	return ret;
 }
@@ -356,28 +363,28 @@ void ModuleSceneIntro::Radio()
 {
 	if (indexMusic == 0 && !song1_active)
 	{
-		//Insert PlayMusic();
+		App->audio->PlayMusic("music/Naruto_op_16.ogg");
 		song = "Naruto";
 		song1_active = true;
 		song4_active = false;
 	}
 	else if (indexMusic == 1 && !song2_active)
 	{
-		//Insert PlayMusic();
+		App->audio->PlayMusic("music/DBZ_op_1.ogg");
 		song = "Dragon Ball";
 		song1_active = false;
 		song2_active = true;
 	}
 	else if (indexMusic == 2 && !song3_active)
 	{
-		//Insert PlayMusic();
+		App->audio->PlayMusic("music/One_Piece_op_1.ogg");
 		song = "One Piece";
 		song2_active = false;
 		song3_active = true;
 	}
 	else if (indexMusic == 3 && !song4_active)
 	{
-		//Insert PlayMusic();
+		App->audio->PlayMusic("music/Willyrex_Paradise.ogg");
 		song = "Willyrex";
 		song3_active = false;
 		song4_active = true;
@@ -480,7 +487,7 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 		for (p2List_item<PhysBody3D*>* iterator = b_coins.getFirst(); iterator != nullptr; iterator = iterator->next)
 		{
 			if (body1 == iterator->data) {
-				//Insert PlayFx();
+				App->audio->PlayFx(1);
 				App->player->vehicle->Push(0.0f, 0.0f, 200.0f);
 				current_coins += 1;
 				coins_to_delete.add(iterator);
