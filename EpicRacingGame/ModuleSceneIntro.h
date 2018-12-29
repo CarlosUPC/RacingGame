@@ -7,6 +7,8 @@
 
 #define MAX_SNAKE 2
 #define ROAD_DIM vec3(10,0.5,10)
+#define OBS_DIM_WIDE vec3(4, 5, 10)
+#define OBS_DIM_THIN vec3(2, 5, 10)
 #define SENSOR_DIM vec3(10,2,2)
 #define SENSOR_DIM2 vec3(2,2,10)
 #define RESPAWN_DIM vec3(500,5,500)
@@ -31,6 +33,7 @@ public:
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
 	void LoadCircuit();
 	void PrintCircuit();
+	void LoadObstacles();
 	void LoadCoins();
 	void CreateCube(vec3 dimension = { 1.0f,1.0f,1.0f }, vec3 position = { 0.0f, 0.0f, 0.0f }, Color color = White, float angle = 0.0f, vec3 u = (0.0f, 0.0f, 0.0f), float mass = 0.0f);
 	PhysBody3D* CreateCoin(float radius = 0.0f, vec3 position = { 0.0f, 0.0f, 0.0f }, Color color = White, bool sensor = false,float angle = 0.0f, vec3 u = (0.0f, 0.0f, 0.0f), float mass = 0.0f);

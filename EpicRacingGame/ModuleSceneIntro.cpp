@@ -29,6 +29,7 @@ bool ModuleSceneIntro::Start()
 	LoadCheckPoints();
 	LoadCircuit();
 	LoadCoins();
+	LoadObstacles();
 
 	return ret;
 }
@@ -251,6 +252,26 @@ void ModuleSceneIntro::LoadCircuit() {
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * -1), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * 1), White);
 	CreateCube(ROAD_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 31, vec3_zero.x + ROAD_DIM.z * 2), Red); // FINISH
+}
+
+void ModuleSceneIntro::LoadObstacles()
+{
+	CreateCube(OBS_DIM_WIDE, vec3(vec3_zero.x + ROAD_DIM.x, vec3_zero.y + 22.75f, vec3_zero.x + ROAD_DIM.z * 9.7f), White, 90.0f, axis_y);
+	CreateCube(OBS_DIM_THIN, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 22.75, vec3_zero.x + ROAD_DIM.z * 12), White);
+	CreateCube(OBS_DIM_THIN, vec3(vec3_zero.x + ROAD_DIM.x * 6, vec3_zero.y + 22.75, vec3_zero.x + ROAD_DIM.z * 26), White, 90.0f, axis_y);
+	CreateCube(OBS_DIM_WIDE, vec3(vec3_zero.x + ROAD_DIM.x * 3.7, vec3_zero.y + 22.75, vec3_zero.x + ROAD_DIM.z * 25), White);
+	CreateCube(OBS_DIM_THIN, vec3(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 22.75, vec3_zero.x + ROAD_DIM.z * 18), White, 90.0f, axis_y);
+	CreateCube(OBS_DIM_THIN, vec3(vec3_zero.x + ROAD_DIM.x * -4, vec3_zero.y + 22.75, vec3_zero.x + ROAD_DIM.z * 18), White, 90.0f, axis_y);
+	CreateCube(OBS_DIM_WIDE, vec3(vec3_zero.x + ROAD_DIM.x * -6, vec3_zero.y + 22.75, vec3_zero.x + ROAD_DIM.z * 18.3f), White, 90.0f, axis_y);
+	CreateCube(OBS_DIM_THIN, vec3(vec3_zero.x + ROAD_DIM.x * -6, vec3_zero.y + 22.75, vec3_zero.x + ROAD_DIM.z * 17.6f), White, 90.0f, axis_y);
+	CreateCube(OBS_DIM_WIDE, vec3(vec3_zero.x + ROAD_DIM.x * -7, vec3_zero.y + 22.75, vec3_zero.x + ROAD_DIM.z * 12.7), White, 90.0f, axis_y);
+
+	CreateCube(OBS_DIM_THIN, vec3(vec3_zero.x + ROAD_DIM.x * -4, vec3_zero.y + 22.75, vec3_zero.x + ROAD_DIM.z * 11), White);
+	CreateCube(OBS_DIM_THIN, vec3(vec3_zero.x + ROAD_DIM.x * -4, vec3_zero.y + 22.75, vec3_zero.x + ROAD_DIM.z * 10), White);
+
+	CreateCube(OBS_DIM_THIN, vec3(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 33.75, vec3_zero.x + ROAD_DIM.z * -4), White, 90.0f, axis_y);
+	CreateCube(OBS_DIM_THIN, vec3(vec3_zero.x + ROAD_DIM.x * -2, vec3_zero.y + 33.75, vec3_zero.x + ROAD_DIM.z * -4), White, 90.0f, axis_y);
+	CreateCube(OBS_DIM_WIDE, vec3(vec3_zero.x + ROAD_DIM.x * 4.3, vec3_zero.y + 33.75, vec3_zero.x + ROAD_DIM.z * -2), White);
 }
 
 void ModuleSceneIntro::PrintCircuit() {
