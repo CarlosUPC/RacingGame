@@ -233,7 +233,7 @@ update_status ModulePlayer::Update(float dt)
 		App->scene_intro->LoadCoins();
 		App->scene_intro->current_coins = 0;
 		App->scene_intro->current_checkpoint = 0;
-		App->scene_intro->minutes = 1;
+		App->scene_intro->minutes = 2;
 		App->scene_intro->seconds = 60.0f;
 	}
 

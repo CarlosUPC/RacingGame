@@ -20,7 +20,7 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
 	bool ret = true;
 	
-	minutes = 1;
+	minutes = 2;
 	seconds = 60.0f;
 	
 	App->camera->Move(vec3(0.0f, 25.0f, -15.0f));
