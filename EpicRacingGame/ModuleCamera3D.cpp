@@ -80,7 +80,7 @@ update_status ModuleCamera3D::Update(float dt)
 
 		if (App->player->over_cam)
 			App->camera->LookAt(vec3(x_value, 1, z_value));
-		else  App->camera->LookAt(vec3(x_value, 20, z_value));
+		else  App->camera->LookAt(vec3(x_value, 25, z_value));
 
 	}
 	

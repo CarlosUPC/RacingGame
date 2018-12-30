@@ -112,16 +112,16 @@ void ModuleSceneIntro::LoadCheckPoints() {
 	check_points[0] = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x, vec3_zero.y + 23, vec3_zero.z + ROAD_DIM.z * 9), true);
 	check_points[0]->collision_listeners.add(this);
 
-	check_points[2] = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 23, vec3_zero.z + ROAD_DIM.z * 12), true);
+	check_points[2] = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 8, vec3_zero.y + 23, vec3_zero.z + ROAD_DIM.z * 14), true);
 	check_points[2]->collision_listeners.add(this);
 
-	check_points[3] = CreateCheckPoints(SENSOR_DIM2, vec3(vec3_zero.x + ROAD_DIM.x * -2, vec3_zero.y + 23, vec3_zero.z + ROAD_DIM.z * 18), true);
+	check_points[3] = CreateCheckPoints(SENSOR_DIM2, vec3(vec3_zero.x + ROAD_DIM.x * -1, vec3_zero.y + 23, vec3_zero.z + ROAD_DIM.z * 18), true);
 	check_points[3]->collision_listeners.add(this);
 
-	check_points[4] = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -4, vec3_zero.y + 23, vec3_zero.z + ROAD_DIM.z * 9), true);
+	check_points[4] = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x + ROAD_DIM.x * -4, vec3_zero.y + 23, vec3_zero.z + ROAD_DIM.z * 8), true);
 	check_points[4]->collision_listeners.add(this);
 
-	check_points[5] = CreateCheckPoints(SENSOR_DIM2, vec3(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 33, vec3_zero.z + ROAD_DIM.z * -4), true);
+	check_points[5] = CreateCheckPoints(SENSOR_DIM2, vec3(vec3_zero.x + ROAD_DIM.x * -8, vec3_zero.y + 33, vec3_zero.z + ROAD_DIM.z * -4), true);
 	check_points[5]->collision_listeners.add(this);
 
 	deathLine = CreateCheckPoints(SENSOR_DIM, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 33, vec3_zero.z + ROAD_DIM.z + 6), true);
