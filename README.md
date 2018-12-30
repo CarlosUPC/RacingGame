@@ -49,4 +49,5 @@ Our main goal's game is complete the circuit before the timer reaches zero, othe
   * **W** to win automatically.
   * **L** to lose automatically.
   * **C** to respawn into last checkpoint
+  * **Z** to unlock/lock camera debugger to show up & drag all 3D map
   
