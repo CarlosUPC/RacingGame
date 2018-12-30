@@ -115,6 +115,8 @@ bool ModulePlayer::Start()
 	vehicle->SetPos(position.x, position.y, position.z);
 	
 	//Insert LoadFx();
+	 App->audio->LoadFx("fx/game_over_fx.wav");
+	 App->audio->LoadFx("fx/win_fx.wav");
 	return true;
 }
 
@@ -176,7 +178,7 @@ update_status ModulePlayer::Update(float dt)
 	}
 
 	//--------------------WIN CONDITION----------------------//
-	if (App->scene_intro->win || App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN)
+	if (App->scene_intro->win && !fx_done || App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN)
 	{
 		App->audio->PlayFx(3);
 		App->scene_intro->win = true;
@@ -185,10 +187,11 @@ update_status ModulePlayer::Update(float dt)
 		IdentityMatrix = I_MAT;
 		vehicle->SetTransform(IdentityMatrix.M);
 		vehicle->SetPos(initial_position.x, initial_position.y - 20, initial_position.z);
+		fx_done = true;
 	}
 
 	//--------------------LOSE CONDITION----------------------//
-	if (App->scene_intro->lose || App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+	if (App->scene_intro->lose && !fx_done || App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 	{
 		App->audio->PlayFx(2);
 		App->scene_intro->lose = true;
@@ -197,6 +200,7 @@ update_status ModulePlayer::Update(float dt)
 		IdentityMatrix = I_MAT;
 		vehicle->SetTransform(IdentityMatrix.M);
 		vehicle->SetPos(initial_position.x, initial_position.y - 20, initial_position.z);
+		fx_done = true;
 	}
 
 

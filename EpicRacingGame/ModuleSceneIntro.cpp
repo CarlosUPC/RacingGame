@@ -23,8 +23,7 @@ bool ModuleSceneIntro::Start()
 	//Insert PlayMusic();
 	//Insert 
 	App->audio->LoadFx("fx/coin_fx.wav");
-	App->audio->LoadFx("fx/game_over_fx.wav");
-	App->audio->LoadFx("fx/win_fx.wav");
+	
 
 	minutes = 1;
 	seconds = 60.0f;

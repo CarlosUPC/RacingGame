@@ -32,4 +32,6 @@ public:
 	btVector3 jumping_gravity;
 	bool is_jumping = false;
 	float jumping_time = 0.0f;
+	bool fx_done = false;
+	
 };
