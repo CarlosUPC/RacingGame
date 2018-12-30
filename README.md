@@ -5,6 +5,8 @@ This is a small project made it by two students from CITM-UPC videogame developm
 
 We created a physics game where the main character is a car to test our knowledge with Bullet Physics library with the help of OpenGL library.
 
+![](https://raw.githubusercontent.com/CarlosUPC/RacingGame/master/docs/circuit.png)
+>  Circuit of the game
 ## Students Involved
 
 Carlos Peña Hernando: https://github.com/CarlosUPC
