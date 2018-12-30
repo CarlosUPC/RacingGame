@@ -80,7 +80,6 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.axis = true;
 	p.Render();
 	
-	
 	Radio();
 	Timer(dt);
 	PrintCircuit();
@@ -279,10 +278,53 @@ void ModuleSceneIntro::LoadObstacles()
 	CreateCube(OBS_DIM_THIN, vec3(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 33.75, vec3_zero.x + ROAD_DIM.z * -4), White, 90.0f, axis_y);
 	CreateCube(OBS_DIM_THIN, vec3(vec3_zero.x + ROAD_DIM.x * -2, vec3_zero.y + 33.75, vec3_zero.x + ROAD_DIM.z * -4), White, 90.0f, axis_y);
 	CreateCube(OBS_DIM_WIDE, vec3(vec3_zero.x + ROAD_DIM.x * 4.3, vec3_zero.y + 33.75, vec3_zero.x + ROAD_DIM.z * -2), White);
+
+
+	//------------------------------ CONSTRAINTS----------------------------------//
+
+	//Rotation axis
+	axis1.size = (AXIS_DIM);
+	axis1.SetPos(vec3_zero.x + ROAD_DIM.x * 3, vec3_zero.y + 25, vec3_zero.x + ROAD_DIM.z * 2);
+	axis1_pb = App->physics->AddBody(axis1, 0.0f);
+	
+	axis2.size = (AXIS_DIM);
+	axis2.SetPos(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 25, vec3_zero.x + ROAD_DIM.z * 2);
+	axis2_pb = App->physics->AddBody(axis2, 0.0f);
+
+	axis3.size = (AXIS_DIM);
+	axis3.SetPos(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 25, vec3_zero.x + ROAD_DIM.z * 6);
+	axis3_pb = App->physics->AddBody(axis3, 0.0f);
+
+	//Rotator obstacle
+	obstacle1.size = (OBS_ROT_DIM);
+	obstacle1.SetPos(vec3_zero.x + ROAD_DIM.x * 3, vec3_zero.y + 25, vec3_zero.x + ROAD_DIM.z * 2);
+	obstacle1.color = Green;
+	obstacle1_pb = App->physics->AddBody(obstacle1, 30.0f);
+	
+	obstacle2.size = (OBS_ROT_DIM);
+	obstacle2.SetPos(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 25, vec3_zero.x + ROAD_DIM.z * 2);
+	obstacle2.color = Green;
+	obstacle2_pb = App->physics->AddBody(obstacle2, 30.0f);
+
+	obstacle3.size = (OBS_ROT_DIM);
+	obstacle3.SetPos(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 25, vec3_zero.x + ROAD_DIM.z * 6);
+	obstacle3.color = Green;
+	obstacle3_pb = App->physics->AddBody(obstacle3, 30.0f);
+	
+	//Constraint
+	App->physics->AddConstraintHinge(*axis1_pb, *obstacle1_pb, vec3(0, 0, 0), vec3(0, 0, 12), vec3(0, 1, 0), vec3(0, 1, 0), true,true);
+
+	App->physics->AddConstraintHinge(*axis2_pb, *obstacle2_pb, vec3(0, 0, 0), vec3(0, 0, 12), vec3(0, 1, 0), vec3(0, 1, 0), true, true);
+
+	App->physics->AddConstraintHinge(*axis3_pb, *obstacle3_pb, vec3(0, 0, 0), vec3(0, 0, 12), vec3(0, 1, 0), vec3(0, 1, 0), true, true);
+
+
 }
 
 void ModuleSceneIntro::PrintCircuit() {
 	
+
+	//------- Roads ---------//
 	p2List_item<Cube>* cubes_item = cubes.getFirst();
 
 	while (cubes_item != nullptr) {
@@ -291,6 +333,8 @@ void ModuleSceneIntro::PrintCircuit() {
 		cubes_item = cubes_item->next;
 	}
 
+
+	//------- Coins ---------//
 	Sphere coin(1.0);
 	coin.color = Yellow;
 
@@ -300,14 +344,15 @@ void ModuleSceneIntro::PrintCircuit() {
 		coin.Render();
 	}
 
-	/*p2List_item<Sphere>* sphere_item = s_coins.getFirst();            // previous method to render sphere coins (primitive)
-	
-	while (sphere_item != nullptr) {
-		if(sphere_item->data.to_delete == false)
-		       sphere_item->data.Render();
+	//------- Constraints ---------//
+	obstacle1_pb->GetTransform(&obstacle1.transform);
+	obstacle1.Render();
 
-		sphere_item = sphere_item->next;
-	}*/
+	obstacle2_pb->GetTransform(&obstacle2.transform);
+	obstacle2.Render();
+	
+	obstacle3_pb->GetTransform(&obstacle3.transform);
+	obstacle3.Render();
 }
 
 
