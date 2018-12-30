@@ -283,30 +283,30 @@ void ModuleSceneIntro::LoadObstacles()
 
 	//Rotation axis
 	axis1.size = (AXIS_DIM);
-	axis1.SetPos(vec3_zero.x + ROAD_DIM.x * 3, vec3_zero.y + 25, vec3_zero.x + ROAD_DIM.z * 2);
+	axis1.SetPos(vec3_zero.x + ROAD_DIM.x * -15, vec3_zero.y + 27, vec3_zero.x + ROAD_DIM.z * 15);
 	axis1_pb = App->physics->AddBody(axis1, 0.0f);
 	
 	axis2.size = (AXIS_DIM);
-	axis2.SetPos(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 25, vec3_zero.x + ROAD_DIM.z * 2);
+	axis2.SetPos(vec3_zero.x + ROAD_DIM.x , vec3_zero.y + 30, vec3_zero.x + ROAD_DIM.z * 4);
 	axis2_pb = App->physics->AddBody(axis2, 0.0f);
 
 	axis3.size = (AXIS_DIM);
-	axis3.SetPos(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 25, vec3_zero.x + ROAD_DIM.z * 6);
+	axis3.SetPos(vec3_zero.x + ROAD_DIM.x * -8, vec3_zero.y + 27, vec3_zero.x + ROAD_DIM.z * 7);
 	axis3_pb = App->physics->AddBody(axis3, 0.0f);
 
 	//Rotator obstacle
 	obstacle1.size = (OBS_ROT_DIM);
-	obstacle1.SetPos(vec3_zero.x + ROAD_DIM.x * 3, vec3_zero.y + 25, vec3_zero.x + ROAD_DIM.z * 2);
+	obstacle1.SetPos(vec3_zero.x + ROAD_DIM.x * -15, vec3_zero.y + 27, vec3_zero.x + ROAD_DIM.z * 15);
 	obstacle1.color = Green;
 	obstacle1_pb = App->physics->AddBody(obstacle1, 30.0f);
 	
 	obstacle2.size = (OBS_ROT_DIM);
-	obstacle2.SetPos(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 25, vec3_zero.x + ROAD_DIM.z * 2);
+	obstacle2.SetPos(vec3_zero.x + ROAD_DIM.x , vec3_zero.y + 30, vec3_zero.x + ROAD_DIM.z * 4);
 	obstacle2.color = Green;
 	obstacle2_pb = App->physics->AddBody(obstacle2, 30.0f);
 
 	obstacle3.size = (OBS_ROT_DIM);
-	obstacle3.SetPos(vec3_zero.x + ROAD_DIM.x * -3, vec3_zero.y + 25, vec3_zero.x + ROAD_DIM.z * 6);
+	obstacle3.SetPos(vec3_zero.x + ROAD_DIM.x * -8, vec3_zero.y + 27, vec3_zero.x + ROAD_DIM.z * 7);
 	obstacle3.color = Green;
 	obstacle3_pb = App->physics->AddBody(obstacle3, 30.0f);
 	

@@ -80,7 +80,7 @@ public:
 	//Sensors
 	PhysBody3D* check_points[9] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr , nullptr };
 	PhysBody3D* coins[9] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr , nullptr };
-	uint current_checkpoint = 5;
+	uint current_checkpoint = 0;
 	uint current_coins = 0;
 
 	//Timer

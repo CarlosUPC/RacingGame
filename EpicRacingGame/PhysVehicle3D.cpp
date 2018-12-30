@@ -145,8 +145,3 @@ void PhysVehicle3D::CarJump(float delta)
 {
 	
 }
-
-vec3 PhysVehicle3D::getVec3Pos() {
-	vec3 ret;
-	return ret;
-}

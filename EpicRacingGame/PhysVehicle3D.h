@@ -61,7 +61,6 @@ public:
 	void Brake(float force);
 	void Turn(float degrees);
 	float GetKmh() const;
-	vec3 getVec3Pos();
 	void CarJump(float delta);
 public:
 	btRigidBody* body;
