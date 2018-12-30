@@ -20,11 +20,6 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
 	bool ret = true;
 	
-	//Insert PlayMusic();
-	//Insert 
-	App->audio->LoadFx("fx/coin_fx.wav");
-	
-
 	minutes = 1;
 	seconds = 60.0f;
 	
@@ -35,8 +30,9 @@ bool ModuleSceneIntro::Start()
 	LoadCircuit();
 	LoadCoins();
 	LoadObstacles();
-	App->audio->PlayMusic("music/Naruto_op_16.ogg");
 
+	App->audio->PlayMusic("music/Naruto_op_16.ogg");
+	App->audio->LoadFx("fx/coin_fx.wav");
 	return ret;
 }
 
@@ -74,7 +70,6 @@ return UPDATE_CONTINUE;
 // Update
 update_status ModuleSceneIntro::Update(float dt)
 {
-	
 	Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();
@@ -140,9 +135,6 @@ void ModuleSceneIntro::LoadCoins() {
 	CreateCoin(1.0f, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 22, vec3_zero.x + ROAD_DIM.z * 7), Yellow, true);
 	CreateCoin(1.0f, vec3(vec3_zero.x + ROAD_DIM.x * -11, vec3_zero.y + 33, vec3_zero.x + ROAD_DIM.z * -4), Yellow, true);
 	CreateCoin(1.0f, vec3(vec3_zero.x + ROAD_DIM.x * 4, vec3_zero.y + 33, vec3_zero.x + ROAD_DIM.z * -4), Yellow, true);
-
-	//coins[0]->SetAsSensor(true);
-	//coins[0]->collision_listeners.add(this);
 
 }
 
@@ -369,7 +361,7 @@ void ModuleSceneIntro::CreateCube(vec3 dim, vec3 pos, Color color, float angle, 
 
 	cubes.add(c);
 
-	//return c;
+
 }
 
 PhysBody3D* ModuleSceneIntro::CreateCoin(float radius, vec3 pos, Color color, bool sensor, float angle, vec3 u, float mass)
@@ -387,7 +379,7 @@ PhysBody3D* ModuleSceneIntro::CreateCoin(float radius, vec3 pos, Color color, bo
 	coin->collision_listeners.add(this);
 
 	b_coins.add(coin);
-	//s_coins.add(s);
+	
 	return coin;
 }
 
@@ -540,9 +532,5 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2) {
 		}
 
 	}
-
-	/*if (body1 == coins[0] && body2 == (PhysBody3D*)App->player->vehicle) {            // First method to delete coin phys bodies
-				App->physics->DeleteBody(coins[0]);
-		}*/
 
 }

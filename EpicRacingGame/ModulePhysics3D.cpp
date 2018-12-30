@@ -146,30 +146,6 @@ update_status ModulePhysics3D::PostUpdate(float dt)
 	return UPDATE_CONTINUE;
 }
 
-bool ModulePhysics3D::DeleteBody(PhysBody3D* pbody) {
-
-	// Shitty function
-	p2List_item<PhysBody3D*>* item = bodies.getFirst();
-
-	
-		while (item != nullptr) {
-
-
-			if (item->data == pbody) {
-				bodies.del(item);
-				item->data = nullptr;
-				
-				return true;
-			}
-
-			item = item->next;
-		}
-
-		
-
-	return false;
-}
-
 
 
 // Called before quitting
