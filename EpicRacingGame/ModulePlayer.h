@@ -34,4 +34,6 @@ public:
 	float jumping_time = 0.0f;
 	bool fx_done = false;
 	
+	bool over_cam = false;
+	
 };

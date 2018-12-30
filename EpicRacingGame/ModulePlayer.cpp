@@ -176,10 +176,16 @@ update_status ModulePlayer::Update(float dt)
 		}
 
 	}
+	//--------------------CAMERA DEBUG ON----------------------//
+	if (App->input->GetKey(SDL_SCANCODE_Z) == KEY_DOWN)
+	{
+		App->camera->cam_on = !App->camera->cam_on;
+	}
 
 	//--------------------WIN CONDITION----------------------//
 	if (App->scene_intro->win && !fx_done || App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN)
 	{
+		over_cam = true;
 		App->audio->PlayFx(3);
 		App->scene_intro->win = true;
 		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
@@ -193,6 +199,7 @@ update_status ModulePlayer::Update(float dt)
 	//--------------------LOSE CONDITION----------------------//
 	if (App->scene_intro->lose && !fx_done || App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 	{
+		over_cam = true;
 		App->audio->PlayFx(2);
 		App->scene_intro->lose = true;
 		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
@@ -209,6 +216,8 @@ update_status ModulePlayer::Update(float dt)
 	//----------------------RESTART-----------------------//
 	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN) {
 		
+		over_cam = false;
+
 		App->scene_intro->lose = false;
 		App->scene_intro->win = false;
 
@@ -269,12 +278,14 @@ update_status ModulePlayer::Update(float dt)
 
 	}
 
+
+	
 	vehicle->ApplyEngineForce(acceleration);
 	vehicle->Turn(turn);
 	vehicle->Brake(brake);
 
 	vehicle->Render();
-	vehicle->GetPos(position.x, position.y, position.z);
+	//vehicle->GetPos(position.x, position.y, position.z);
 	char title[80];
 	
 	if (!App->scene_intro->win && !App->scene_intro->lose)
